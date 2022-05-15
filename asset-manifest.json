@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React_AirportUtilizationCovid/static/css/main.280a4dc1.css",
+    "main.js": "/React_AirportUtilizationCovid/static/js/main.75e7effd.js",
+    "static/js/787.b5c55b75.chunk.js": "/React_AirportUtilizationCovid/static/js/787.b5c55b75.chunk.js",
+    "index.html": "/React_AirportUtilizationCovid/index.html",
+    "main.280a4dc1.css.map": "/React_AirportUtilizationCovid/static/css/main.280a4dc1.css.map",
+    "main.75e7effd.js.map": "/React_AirportUtilizationCovid/static/js/main.75e7effd.js.map",
+    "787.b5c55b75.chunk.js.map": "/React_AirportUtilizationCovid/static/js/787.b5c55b75.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.280a4dc1.css",
+    "static/js/main.75e7effd.js"
+  ]
+}
