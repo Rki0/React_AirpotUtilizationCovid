@@ -1,0 +1,111 @@
+// 이 파일은 공항 이름, 출발 데이터, 도착 데이터를 Doughnut Chart로 구현하는 부분
+import { useState } from "react";
+
+import styled from "styled-components";
+
+// 도넛 차트 구현을 위해 import 해야할 것들. Chart.js 참고.
+import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  ArcElement,
+  Legend,
+  Tooltip,
+} from "chart.js";
+
+ChartJS.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  ArcElement,
+  Legend,
+  Tooltip
+);
+
+function DataChart({ flightDataAfter, chartDepData, chartArrData }) {
+  const allData = [];
+
+  for (let i = 0; i < flightDataAfter.length; i++) {
+    // allData[i] = { ...flightDataAfter[i], chartDepData: chartDepData[i] };
+    allData[i] = {
+      ...flightDataAfter[i],
+      chartDepData: chartDepData[i],
+      chartArrData: chartArrData[i],
+    };
+  }
+
+  console.log(allData);
+
+  return (
+    <DataSet>
+      {allData.map((data) => (
+        <OneData>
+          <Airport>{data.airport}</Airport>
+
+          <ChartDiv>
+            <DoughnutContainer>
+              <h3>Departure</h3>
+              <Doughnut data={data.chartDepData} />
+            </DoughnutContainer>
+
+            <DoughnutContainer>
+              <h3>Arrive</h3>
+              <Doughnut data={data.chartArrData} />
+            </DoughnutContainer>
+          </ChartDiv>
+        </OneData>
+      ))}
+    </DataSet>
+  );
+}
+
+export default DataChart;
+
+const DataSet = styled.div`
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const OneData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow: 19px 19px 38px #9b9b9b, -19px -19px 38px #ffffff;
+  margin: 10px;
+`;
+
+const Airport = styled.h2`
+  font-size: 36px;
+  font-weight: 700;
+  color: #546e7a;
+  display: inline-block;
+  width: 150px;
+  border-bottom: 3px solid #546e7a;
+`;
+
+const ChartDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin-bottom: 20px;
+`;
+
+const DoughnutContainer = styled.div`
+  width: 300px;
+  padding: 10px;
+  // canvas {
+  //   max-width: 100%;
+  // }
+  max-width: 100%;
+`;
